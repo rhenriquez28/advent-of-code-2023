@@ -28,13 +28,6 @@ for (const line of parsedInput) {
       isLastLine: parsedInput.indexOf(line) === parsedInput.length - 1,
     };
 
-    if (partNumber === "315") {
-      console.log(numberPartSpecs);
-      console.log("on sides", hasSymbolOnSides(parsedInput, numberPartSpecs));
-      console.log("up", hasSymbolUp(parsedInput, numberPartSpecs));
-      console.log("down", hasSymbolDown(parsedInput, numberPartSpecs));
-    }
-
     if (
       hasSymbolOnSides(parsedInput, numberPartSpecs) ||
       hasSymbolUp(parsedInput, numberPartSpecs) ||
@@ -69,24 +62,6 @@ function hasSymbolOnSides(
     ? isSymbol(input[lineIndex + 1][leftBorderIndex]) ||
       isSymbol(input[lineIndex + 1][rightBorderIndex])
     : false;
-
-  if (numberPartSpecs.firstIndex === 137 && numberPartSpecs.lineIndex === 16) {
-    console.log(
-      "hasSymbolOnDirectSides",
-      isSymbol(input[lineIndex][leftBorderIndex]),
-      input[lineIndex][rightBorderIndex]
-    );
-    console.log(
-      "hasSymbolDiagonallyUp",
-      isSymbol(input[lineIndex - 1][leftBorderIndex]),
-      input[lineIndex - 1][rightBorderIndex]
-    );
-    console.log(
-      "hasSymbolDiagonallyDown",
-      isSymbol(input[lineIndex + 1][leftBorderIndex]),
-      input[lineIndex + 1][rightBorderIndex]
-    );
-  }
 
   return (
     hasSymbolOnDirectSides || hasSymbolDiagonallyUp || hasSymbolDiagonallyDown
