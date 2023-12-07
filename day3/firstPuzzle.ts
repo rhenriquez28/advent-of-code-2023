@@ -17,15 +17,19 @@ let array: RegExpExecArray | null = null;
 const partNumbers: number[] = [];
 
 for (const line of parsedInput) {
+  const lineIndex = parsedInput.indexOf(line);
+  const isFirstLine = lineIndex === 0;
+  const isLastLine = lineIndex === parsedInput.length - 1;
+
   while ((array = digitRegex.exec(line)) !== null) {
     const partNumber = array[0];
     const partNumberLength = partNumber.length;
     const numberPartSpecs: PartNumberSpecs = {
       firstIndex: array.index,
       lastIndex: array.index + partNumberLength - 1,
-      lineIndex: parsedInput.indexOf(line),
-      isFirstLine: parsedInput.indexOf(line) === 0,
-      isLastLine: parsedInput.indexOf(line) === parsedInput.length - 1,
+      lineIndex,
+      isFirstLine,
+      isLastLine,
     };
 
     if (
